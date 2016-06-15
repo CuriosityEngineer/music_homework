@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160615151319) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artists", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -26,6 +29,6 @@ ActiveRecord::Schema.define(version: 20160615151319) do
     t.integer  "artist_id"
   end
 
-  add_index "songs", ["artist_id"], name: "index_songs_on_artist_id"
+  add_index "songs", ["artist_id"], name: "index_songs_on_artist_id", using: :btree
 
 end
